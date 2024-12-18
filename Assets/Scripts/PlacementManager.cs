@@ -5,35 +5,29 @@ using UnityEngine.UI;
 public class PlacementManager : MonoBehaviour
 {
     [Header("References")]
-    public Camera mainCamera;            // Главная камера
-    public LayerMask groundLayer;        // Слой земли для размещения персонажей
-    public BattleManager battleManager;  // Ссылка на BattleManager для запуска боя
-    public Button startBattleButton;     // Кнопка "Начать бой"
+    public Camera mainCamera;
+    public LayerMask groundLayer;
+    public BattleManager battleManager;
+    public Button startBattleButton;
 
     [Header("Placement Settings")]
-    public float verticalOffset = 0f;    // Вертикальный оффсет для размещения персонажа
+    public float verticalOffset = 0f;
+    public Vector3 characterRotation = Vector3.zero; // Настройка поворота в инспекторе
 
     [Header("Preview Settings")]
-    public Material previewMaterial;     // Материал для объекта-превью (прозрачный)
+    public Material previewMaterial;
 
-    private GameObject selectedPrefab;   // Текущий выбранный префаб для размещения
-    private GameObject previewObject;    // Объект-превью, который следует за курсором
-    private bool isPlacing = false;      // Флаг режима размещения
-    private bool hasPlacedCharacter = false; // Флаг: был ли размещён хотя бы один персонаж
+    private GameObject selectedPrefab;
+    private GameObject previewObject;
+    private bool isPlacing = false;
+    private bool hasPlacedCharacter = false;
 
     void Start()
     {
-        // Убедимся, что кнопка "Начать бой" изначально выключена
         if (startBattleButton != null)
-        {
             startBattleButton.interactable = false;
-        }
     }
 
-    /// <summary>
-    /// Вызывается при нажатии на кнопку выбора персонажа.
-    /// </summary>
-    /// <param name="prefab">Префаб персонажа для размещения.</param>
     public void SelectPrefab(GameObject prefab)
     {
         if (isPlacing && previewObject != null)
@@ -44,19 +38,13 @@ public class PlacementManager : MonoBehaviour
         selectedPrefab = prefab;
         isPlacing = true;
 
-        // Создаём объект-превью
         previewObject = Instantiate(prefab);
         previewObject.name = "Preview_" + prefab.name;
 
-        // Устанавливаем масштаб превью в соответствии с оригинальным префабом
-        previewObject.transform.localScale = prefab.transform.localScale;
-
-        // Отключаем компоненты, которые не нужны для превью
+        // Отключаем лишние компоненты у превью
         Collider previewCollider = previewObject.GetComponent<Collider>();
         if (previewCollider != null)
-        {
             previewCollider.enabled = false;
-        }
 
         Rigidbody previewRigidbody = previewObject.GetComponent<Rigidbody>();
         if (previewRigidbody != null)
@@ -65,29 +53,7 @@ public class PlacementManager : MonoBehaviour
             previewRigidbody.useGravity = false;
         }
 
-        // Применяем отдельный прозрачный материал для превью
-        Renderer[] renderers = previewObject.GetComponentsInChildren<Renderer>();
-        foreach (Renderer rend in renderers)
-        {
-            Material[] mats = rend.materials;
-            for (int i = 0; i < mats.Length; i++)
-            {
-                mats[i] = new Material(previewMaterial);
-                mats[i].color = new Color(mats[i].color.r, mats[i].color.g, mats[i].color.b, 0.5f);
-            }
-            rend.materials = mats;
-        }
-
-        // Отключаем кнопку, с которой был произведён выбор
-        GameObject currentButton = EventSystem.current.currentSelectedGameObject;
-        if (currentButton != null)
-        {
-            Button button = currentButton.GetComponent<Button>();
-            if (button != null)
-            {
-                button.interactable = false;
-            }
-        }
+        ApplyPreviewMaterial(previewObject);
     }
 
     void Update()
@@ -108,54 +74,38 @@ public class PlacementManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Обновляет позицию объекта-превью, следуя за курсором мыши.
-    /// </summary>
     private void UpdatePreviewPosition()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
         {
             float characterHeight = GetCharacterHeight(selectedPrefab);
-
-            // Устанавливаем позицию превью с учётом высоты и вертикального оффсета
             previewObject.transform.position = hit.point + Vector3.up * (characterHeight / 2f + verticalOffset);
 
-            // Гарантируем, что объект-превью видим
+            // Применяем заданный поворот к объекту превью
+            previewObject.transform.rotation = Quaternion.Euler(characterRotation);
+
             if (!previewObject.activeSelf)
-            {
                 previewObject.SetActive(true);
-            }
         }
         else
         {
-            // Скрываем объект-превью, если курсор не над землёй
             if (previewObject.activeSelf)
-            {
                 previewObject.SetActive(false);
-            }
         }
     }
 
-    /// <summary>
-    /// Размещает персонажа на поле.
-    /// </summary>
     private void PlaceCharacter()
     {
         if (previewObject == null || selectedPrefab == null) return;
 
-        GameObject placedObject = Instantiate(selectedPrefab, previewObject.transform.position, Quaternion.identity);
-
-        // Устанавливаем масштаб окончательного объекта в соответствии с оригинальным префабом
-        placedObject.transform.localScale = selectedPrefab.transform.localScale;
-
+        GameObject placedObject = Instantiate(selectedPrefab, previewObject.transform.position, Quaternion.Euler(characterRotation));
         placedObject.name = selectedPrefab.name;
 
+        // Включаем коллайдер и физику
         Collider placedCollider = placedObject.GetComponent<Collider>();
         if (placedCollider != null)
-        {
             placedCollider.enabled = true;
-        }
 
         Rigidbody placedRigidbody = placedObject.GetComponent<Rigidbody>();
         if (placedRigidbody != null)
@@ -164,7 +114,6 @@ public class PlacementManager : MonoBehaviour
             placedRigidbody.useGravity = true;
         }
 
-        // Устанавливаем флаг, что персонаж был размещён
         hasPlacedCharacter = true;
         UpdateStartBattleButton();
 
@@ -189,14 +138,7 @@ public class PlacementManager : MonoBehaviour
     private float GetCharacterHeight(GameObject prefab)
     {
         Collider col = prefab.GetComponent<Collider>();
-        if (col != null)
-        {
-            return col.bounds.size.y;
-        }
-        else
-        {
-            return 2f;
-        }
+        return col != null ? col.bounds.size.y : 2f;
     }
 
     private bool IsPointerOverUI()
@@ -204,27 +146,24 @@ public class PlacementManager : MonoBehaviour
         return EventSystem.current.IsPointerOverGameObject();
     }
 
-    /// <summary>
-    /// Активирует кнопку "Начать бой", если хотя бы один персонаж был размещён.
-    /// </summary>
     private void UpdateStartBattleButton()
     {
         if (startBattleButton != null)
-        {
             startBattleButton.interactable = hasPlacedCharacter;
-        }
     }
 
-    public void StartBattle()
+    private void ApplyPreviewMaterial(GameObject obj)
     {
-        if (battleManager != null)
+        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in renderers)
         {
-            battleManager.StartBattle();
-        }
-
-        if (isPlacing)
-        {
-            CancelPlacement();
+            Material[] mats = rend.materials;
+            for (int i = 0; i < mats.Length; i++)
+            {
+                mats[i] = new Material(previewMaterial);
+                mats[i].color = new Color(mats[i].color.r, mats[i].color.g, mats[i].color.b, 0.5f);
+            }
+            rend.materials = mats;
         }
     }
 }

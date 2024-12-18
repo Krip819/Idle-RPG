@@ -12,6 +12,19 @@ public class BulletController : MonoBehaviour
         this.target = target;
         this.damage = damage;
         this.speed = speed;
+
+        // Убедимся, что у пули отключено физическое воздействие
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true; // Снаряд не взаимодействует с физикой
+        }
+
+        Collider col = GetComponent<Collider>();
+        if (col != null)
+        {
+            col.isTrigger = true; // Отключаем физическое столкновение
+        }
     }
 
     void Update()
@@ -30,8 +43,7 @@ public class BulletController : MonoBehaviour
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if (dist < 0.5f)
         {
-            // Наносим урон цели
-            target.TakeDamage(damage);
+            ApplyDamage();
             Destroy(gameObject);
         }
 
@@ -43,9 +55,21 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        // Дополнительно можно обработать столкновения
-        Destroy(gameObject);
+        // Проверяем, попали ли в цель
+        if (target != null && other.gameObject == target.gameObject)
+        {
+            ApplyDamage();
+            Destroy(gameObject);
+        }
+    }
+
+    private void ApplyDamage()
+    {
+        if (target != null)
+        {
+            target.TakeDamage(damage);
+        }
     }
 }

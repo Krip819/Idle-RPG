@@ -8,6 +8,18 @@ public class HealthBar : MonoBehaviour
 
     private Transform characterTransform; // Ссылка на объект персонажа
     private Vector3 initialScale; // Начальный масштаб полоски
+    private float heightOffset = 2f; // Высота размещения полоски здоровья (настраивается)
+
+    /// <summary>
+    /// Инициализация полоски здоровья.
+    /// </summary>
+    /// <param name="characterTransform">Трансформ персонажа.</param>
+    /// <param name="heightOffset">Смещение по высоте для полоски здоровья.</param>
+    public void Init(Transform characterTransform, float heightOffset)
+    {
+        this.characterTransform = characterTransform;
+        this.heightOffset = heightOffset;
+    }
 
     void Start()
     {
@@ -17,8 +29,11 @@ public class HealthBar : MonoBehaviour
         // Сохраняем начальный масштаб полоски
         initialScale = transform.localScale;
 
-        // Сохраняем ссылку на родителя, чтобы получить позицию персонажа
-        characterTransform = transform.parent;
+        // Если Init не был вызван, попробуем найти родителя
+        if (characterTransform == null)
+        {
+            characterTransform = transform.parent;
+        }
 
         // Открепляем полоску от родителя, чтобы масштаб не наследовался
         transform.SetParent(null);
@@ -34,13 +49,17 @@ public class HealthBar : MonoBehaviour
         }
 
         // Устанавливаем позицию полоски над персонажем
-        transform.position = characterTransform.position + Vector3.up * 2f; // Регулируйте высоту при необходимости
-
-        // Сохраняем горизонтальное выравнивание полоски
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.position = characterTransform.position + Vector3.up * heightOffset;
 
         // Сохраняем изначальный масштаб
         transform.localScale = initialScale;
+
+        // Полоска всегда смотрит на камеру
+        if (mainCamera != null)
+        {
+            transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward,
+                             mainCamera.transform.rotation * Vector3.up);
+        }
     }
 
     /// <summary>
