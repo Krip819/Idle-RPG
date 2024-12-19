@@ -28,7 +28,7 @@ public class CharacterController : MonoBehaviour
 
     [Header("Health Bar")]
     public GameObject healthBarPrefab;
-    public float healthBarHeight = 2f; // Высота полоски здоровья
+    public float healthBarHeight = 2f;
     private HealthBar healthBar;
 
     [Header("Animation")]
@@ -50,6 +50,9 @@ public class CharacterController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private int currentAttackIndex = 0;
+    private int totalAttackAnimations = 2; // Количество доступных анимаций удара
+
     void Awake()
     {
         health = maxHealth;
@@ -58,14 +61,13 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = true;
+            rb.isKinematic = true; // Полностью отключаем физику
             rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         }
     }
 
     void Start()
     {
-        // Создаём полоску здоровья и задаём её высоту
         if (healthBarPrefab != null)
         {
             GameObject hb = Instantiate(healthBarPrefab);
@@ -123,7 +125,7 @@ public class CharacterController : MonoBehaviour
 
     private void MoveTowards(Vector3 targetPos)
     {
-        if (isAttacking) return;
+        if (isAttacking || isDead) return;
 
         Vector3 dir = (targetPos - transform.position).normalized;
         dir.y = 0f;
@@ -132,6 +134,9 @@ public class CharacterController : MonoBehaviour
         {
             dir = AvoidObstacle(dir);
         }
+
+        // Небольшое случайное отклонение для предотвращения скоплений
+        dir = Quaternion.Euler(0, Random.Range(-5f, 5f), 0) * dir;
 
         transform.position += dir * moveSpeed * Time.deltaTime;
 
@@ -149,7 +154,7 @@ public class CharacterController : MonoBehaviour
 
     private void LookAtTarget()
     {
-        if (currentTarget == null) return;
+        if (currentTarget == null || isDead) return;
 
         Vector3 directionToTarget = (currentTarget.transform.position - transform.position).normalized;
         directionToTarget.y = 0f;
@@ -175,12 +180,36 @@ public class CharacterController : MonoBehaviour
     private Vector3 AvoidObstacle(Vector3 direction)
     {
         Vector3 leftDir = Quaternion.Euler(0, -avoidanceAngle, 0) * direction;
-        if (!IsObstacleInPath(leftDir)) return leftDir;
-
         Vector3 rightDir = Quaternion.Euler(0, avoidanceAngle, 0) * direction;
+
+        if (IsAllyInPath(direction))
+        {
+            if (!IsObstacleInPath(leftDir)) return leftDir;
+            if (!IsObstacleInPath(rightDir)) return rightDir;
+        }
+
+        if (!IsObstacleInPath(leftDir)) return leftDir;
         if (!IsObstacleInPath(rightDir)) return rightDir;
 
         return direction;
+    }
+
+    private bool IsAllyInPath(Vector3 direction)
+    {
+        foreach (var ally in myTeamList)
+        {
+            if (ally != this && !ally.isDead)
+            {
+                float dist = Vector3.Distance(transform.position, ally.transform.position);
+                Vector3 dirToAlly = (ally.transform.position - transform.position).normalized;
+
+                if (dist < attackRange && Vector3.Dot(dirToAlly, direction) > 0.7f)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private Quaternion AdjustRotationToForwardAxis(Quaternion targetRotation)
@@ -202,14 +231,16 @@ public class CharacterController : MonoBehaviour
 
     private void Attack()
     {
+        if (isDead || isAttacking) return;
+
         if (animator != null)
         {
             isAttacking = true;
 
             if (attackType == CharacterAttackType.Melee)
             {
-                int attackType = Random.Range(1, 3);
-                animator.SetTrigger($"Attack{attackType}");
+                currentAttackIndex = (currentAttackIndex + 1) % totalAttackAnimations;
+                animator.SetTrigger($"Attack{currentAttackIndex + 1}");
             }
             else if (attackType == CharacterAttackType.Ranged)
             {
@@ -223,7 +254,7 @@ public class CharacterController : MonoBehaviour
 
     private void LaunchProjectile()
     {
-        if (bulletPrefab == null || currentTarget == null) return;
+        if (bulletPrefab == null || currentTarget == null || isDead) return;
 
         Vector3 spawnPosition = transform.position + Vector3.up * 1.5f;
         GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
@@ -237,10 +268,19 @@ public class CharacterController : MonoBehaviour
     private void EndAttack()
     {
         isAttacking = false;
+
+        if (animator != null)
+        {
+            animator.ResetTrigger("Attack1");
+            animator.ResetTrigger("Attack2");
+            animator.ResetTrigger("RangedAttack");
+        }
     }
 
     public void ApplyDamageToTarget()
     {
+        if (isDead) return;
+
         if (currentTarget != null && !currentTarget.isDead)
         {
             currentTarget.TakeDamage(attackDamage);
@@ -266,16 +306,27 @@ public class CharacterController : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
+        isAttacking = false;
+
         if (animator != null)
+        {
+            animator.ResetTrigger("Attack1");
+            animator.ResetTrigger("Attack2");
+            animator.ResetTrigger("RangedAttack");
             animator.SetTrigger("Die");
+        }
 
         if (battleManager != null)
             battleManager.RemoveCharacter(this);
 
-        enabled = false;
+        Collider col = GetComponent<Collider>();
+        if (col != null)
+            col.enabled = false;
 
         if (healthBar != null)
             healthBar.gameObject.SetActive(false);
+
+        enabled = false;
     }
 
     private CharacterController FindNearestEnemy()
@@ -309,6 +360,20 @@ public class CharacterController : MonoBehaviour
         this.myTeamList = myTeam;
         this.enemyTeamList = enemyTeam;
         isInBattle = true;
+
+        // Игнорируем коллизии между союзниками
+        foreach (var ally in myTeam)
+        {
+            if (ally != this)
+            {
+                Collider myCollider = GetComponent<Collider>();
+                Collider allyCollider = ally.GetComponent<Collider>();
+                if (myCollider != null && allyCollider != null)
+                {
+                    Physics.IgnoreCollision(myCollider, allyCollider);
+                }
+            }
+        }
 
         StickToGround();
     }
