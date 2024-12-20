@@ -7,6 +7,9 @@ public class BulletController : MonoBehaviour
     private float speed;
     private float lifeTime = 5f; // Максимальное время жизни пули
 
+    [Header("Effect Settings")]
+    public GameObject impactEffectPrefab; // Префаб эффекта при исчезновении пули
+
     public void Init(CharacterController target, float damage, float speed)
     {
         this.target = target;
@@ -31,6 +34,7 @@ public class BulletController : MonoBehaviour
     {
         if (target == null)
         {
+            CreateImpactEffect();
             Destroy(gameObject);
             return;
         }
@@ -44,6 +48,7 @@ public class BulletController : MonoBehaviour
         if (dist < 0.5f)
         {
             ApplyDamage();
+            CreateImpactEffect();
             Destroy(gameObject);
         }
 
@@ -51,6 +56,7 @@ public class BulletController : MonoBehaviour
         lifeTime -= Time.deltaTime;
         if (lifeTime <= 0f)
         {
+            CreateImpactEffect();
             Destroy(gameObject);
         }
     }
@@ -61,6 +67,7 @@ public class BulletController : MonoBehaviour
         if (target != null && other.gameObject == target.gameObject)
         {
             ApplyDamage();
+            CreateImpactEffect();
             Destroy(gameObject);
         }
     }
@@ -71,5 +78,14 @@ public class BulletController : MonoBehaviour
         {
             target.TakeDamage(damage);
         }
+    }
+
+    private void CreateImpactEffect()
+    {
+        if (impactEffectPrefab == null) return;
+
+        // Создаем эффект в позиции пули
+        GameObject effect = Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
+        Destroy(effect, 2f); // Уничтожаем эффект через 2 секунды
     }
 }

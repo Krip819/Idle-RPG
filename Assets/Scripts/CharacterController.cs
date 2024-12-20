@@ -26,6 +26,13 @@ public class CharacterController : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 10f;
 
+    [Header("Projectile Settings")]
+    public Transform projectileSpawnPoint; // Точка спавна прожектайлов
+
+    [Header("Impact Effect Settings")]
+    public GameObject impactEffectPrefab; // Префаб эффекта удара
+    public Transform impactEffectSpawnPoint; // Точка спавна эффекта
+
     [Header("Health Bar")]
     public GameObject healthBarPrefab;
     public float healthBarHeight = 2f;
@@ -135,9 +142,6 @@ public class CharacterController : MonoBehaviour
             dir = AvoidObstacle(dir);
         }
 
-        // Небольшое случайное отклонение для предотвращения скоплений
-        dir = Quaternion.Euler(0, Random.Range(-5f, 5f), 0) * dir;
-
         transform.position += dir * moveSpeed * Time.deltaTime;
 
         if (animator != null)
@@ -182,34 +186,10 @@ public class CharacterController : MonoBehaviour
         Vector3 leftDir = Quaternion.Euler(0, -avoidanceAngle, 0) * direction;
         Vector3 rightDir = Quaternion.Euler(0, avoidanceAngle, 0) * direction;
 
-        if (IsAllyInPath(direction))
-        {
-            if (!IsObstacleInPath(leftDir)) return leftDir;
-            if (!IsObstacleInPath(rightDir)) return rightDir;
-        }
-
         if (!IsObstacleInPath(leftDir)) return leftDir;
         if (!IsObstacleInPath(rightDir)) return rightDir;
 
         return direction;
-    }
-
-    private bool IsAllyInPath(Vector3 direction)
-    {
-        foreach (var ally in myTeamList)
-        {
-            if (ally != this && !ally.isDead)
-            {
-                float dist = Vector3.Distance(transform.position, ally.transform.position);
-                Vector3 dirToAlly = (ally.transform.position - transform.position).normalized;
-
-                if (dist < attackRange && Vector3.Dot(dirToAlly, direction) > 0.7f)
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     private Quaternion AdjustRotationToForwardAxis(Quaternion targetRotation)
@@ -237,32 +217,46 @@ public class CharacterController : MonoBehaviour
         {
             isAttacking = true;
 
-            if (attackType == CharacterAttackType.Melee)
+            // Чередование анимаций
+            currentAttackIndex = (currentAttackIndex + 1) % totalAttackAnimations;
+
+            if (attackType == CharacterAttackType.Melee || attackType == CharacterAttackType.Ranged)
             {
-                currentAttackIndex = (currentAttackIndex + 1) % totalAttackAnimations;
+                // Используем те же анимации для обоих типов атак
                 animator.SetTrigger($"Attack{currentAttackIndex + 1}");
-            }
-            else if (attackType == CharacterAttackType.Ranged)
-            {
-                animator.SetTrigger("RangedAttack");
-                LaunchProjectile();
             }
         }
 
-        Invoke(nameof(EndAttack), 0.5f);
+        Invoke(nameof(EndAttack), 0.5f); // Завершаем атаку через время анимации
     }
 
-    private void LaunchProjectile()
+    public void LaunchProjectile()
     {
         if (bulletPrefab == null || currentTarget == null || isDead) return;
 
-        Vector3 spawnPosition = transform.position + Vector3.up * 1.5f;
+        // Если точка спавна не указана, используем позицию персонажа
+        Vector3 spawnPosition = projectileSpawnPoint != null 
+            ? projectileSpawnPoint.position 
+            : transform.position + Vector3.up * 1.5f;
+
         GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
         BulletController bulletController = bullet.GetComponent<BulletController>();
         if (bulletController != null)
         {
             bulletController.Init(currentTarget, attackDamage, bulletSpeed);
         }
+    }
+
+    private void SpawnImpactEffect()
+    {
+        if (impactEffectPrefab == null) return;
+
+        Vector3 spawnPosition = impactEffectSpawnPoint != null
+            ? impactEffectSpawnPoint.position
+            : (currentTarget != null ? currentTarget.transform.position : transform.position);
+
+        GameObject effect = Instantiate(impactEffectPrefab, spawnPosition, Quaternion.identity);
+        Destroy(effect, 2f); // Уничтожаем эффект через 2 секунды
     }
 
     private void EndAttack()
@@ -273,7 +267,6 @@ public class CharacterController : MonoBehaviour
         {
             animator.ResetTrigger("Attack1");
             animator.ResetTrigger("Attack2");
-            animator.ResetTrigger("RangedAttack");
         }
     }
 
@@ -285,6 +278,9 @@ public class CharacterController : MonoBehaviour
         {
             currentTarget.TakeDamage(attackDamage);
         }
+
+        // Создаем эффект удара
+        SpawnImpactEffect();
     }
 
     public void TakeDamage(float dmg)
@@ -312,7 +308,6 @@ public class CharacterController : MonoBehaviour
         {
             animator.ResetTrigger("Attack1");
             animator.ResetTrigger("Attack2");
-            animator.ResetTrigger("RangedAttack");
             animator.SetTrigger("Die");
         }
 
@@ -360,20 +355,6 @@ public class CharacterController : MonoBehaviour
         this.myTeamList = myTeam;
         this.enemyTeamList = enemyTeam;
         isInBattle = true;
-
-        // Игнорируем коллизии между союзниками
-        foreach (var ally in myTeam)
-        {
-            if (ally != this)
-            {
-                Collider myCollider = GetComponent<Collider>();
-                Collider allyCollider = ally.GetComponent<Collider>();
-                if (myCollider != null && allyCollider != null)
-                {
-                    Physics.IgnoreCollision(myCollider, allyCollider);
-                }
-            }
-        }
 
         StickToGround();
     }
