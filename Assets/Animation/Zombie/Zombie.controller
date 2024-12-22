@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: faddfa846b3a17f4b88d62acbd89170d, type: 2}
+  m_Motion: {fileID: 7400000, guid: a01d76ca4da1ab443bed304d0ee9cf53, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -47,7 +47,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b968fcbcadd81ed4f951dcc2fbd836fa, type: 2}
+  m_Motion: {fileID: 7400000, guid: 8ef16d4ec7eff434f97957cdee3b9a2a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -104,7 +104,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a2571ae0d4a0e63459350624e4faef08, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4f6b16a3709a5d64cb9cd35195a7c2f8, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -178,7 +178,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Atparo
+  m_Name: Zombie
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsRunning
@@ -251,7 +251,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 207fdb6acd616c849b0a0822517eb6e3, type: 2}
+  m_Motion: {fileID: 7400000, guid: 98841a6251aec4440a44b79664bf942d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -277,7 +277,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: faddfa846b3a17f4b88d62acbd89170d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 47c20d43f81e5444fa29e10fdf9624f3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

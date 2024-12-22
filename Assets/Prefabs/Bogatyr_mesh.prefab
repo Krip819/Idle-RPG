@@ -603,7 +603,7 @@ MonoBehaviour:
   maxHealth: 500
   health: 500
   moveSpeed: 2
-  attackDamage: 25
+  attackDamage: 50
   attackRange: 1.8
   attackCooldown: 0.8
   bulletPrefab: {fileID: 1927391284818015995, guid: 217fa29aa84fd914da38bfa1d4811f13, type: 3}
@@ -617,6 +617,8 @@ MonoBehaviour:
   forwardAxis: 1
   rotationSpeed: 5
   avoidanceAngle: 45
+  attack1Duration: 3
+  attack2Duration: 2
 --- !u!54 &312500003924710459
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -677,7 +679,7 @@ Animator:
   m_GameObject: {fileID: 4027194201225847198}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af5188e5cfdc6334da986a0ef6930d74, type: 2}
+  m_Controller: {fileID: 9100000, guid: a0ac1bb470c5c8f4dae14118734ea985, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

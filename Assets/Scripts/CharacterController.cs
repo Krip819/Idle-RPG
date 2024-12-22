@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public enum CharacterTeam { Allies, Enemies }
 public enum CharacterAttackType { Melee, Ranged }
-
 public enum ForwardAxis { Z, NegativeZ, X, NegativeX }
 
 public class CharacterController : MonoBehaviour
@@ -27,11 +26,11 @@ public class CharacterController : MonoBehaviour
     public float bulletSpeed = 10f;
 
     [Header("Projectile Settings")]
-    public Transform projectileSpawnPoint; // Точка спавна прожектайлов
+    public Transform projectileSpawnPoint;
 
     [Header("Impact Effect Settings")]
-    public GameObject impactEffectPrefab; // Префаб эффекта удара
-    public Transform impactEffectSpawnPoint; // Точка спавна эффекта
+    public GameObject impactEffectPrefab;
+    public Transform impactEffectSpawnPoint;
 
     [Header("Health Bar")]
     public GameObject healthBarPrefab;
@@ -57,8 +56,12 @@ public class CharacterController : MonoBehaviour
 
     private Rigidbody rb;
 
+    [Header("Attack Animations Settings")]
+    public float attack1Duration = 1f;
+    public float attack2Duration = 1f;
+
     private int currentAttackIndex = 0;
-    private int totalAttackAnimations = 2; // Количество доступных анимаций удара
+    private int totalAttackAnimations = 2;
 
     void Awake()
     {
@@ -68,8 +71,10 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = true; // Полностью отключаем физику
-            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+            // Чтобы персонажа не толкала физика
+            rb.isKinematic = true;
+            // Физика не будет вращать персонажа
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
         }
     }
 
@@ -91,13 +96,14 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
+        // Если мертв или не в бою — ничего не делаем
         if (isDead || !isInBattle) return;
 
         currentTarget = FindNearestEnemy();
         if (currentTarget == null)
         {
-            if (animator != null)
-                animator.SetBool("IsRunning", false);
+            // Нет цели, просто стоим
+            animator.SetBool("IsRunning", false);
             return;
         }
 
@@ -105,18 +111,20 @@ public class CharacterController : MonoBehaviour
 
         LookAtTarget();
 
-        if (dist > attackRange && !isAttacking)
+        // Проверяем, нужно ли бежать (цель далеко и не атакуем)
+        bool shouldMove = dist > attackRange && !isAttacking;
+        animator.SetBool("IsRunning", shouldMove);
+
+        if (shouldMove)
         {
             MoveTowards(currentTarget.transform.position);
         }
         else
         {
+            // Если не двигаемся, возможно атакуем
             if (!isAttacking)
             {
-                if (animator != null)
-                    animator.SetBool("IsRunning", false);
-
-                if (attackTimer == 0f)
+                if (attackTimer <= 0f)
                 {
                     Attack();
                     attackTimer = attackCooldown;
@@ -124,10 +132,14 @@ public class CharacterController : MonoBehaviour
             }
         }
 
+        // Кулдаун атаки
         attackTimer = Mathf.Max(0, attackTimer - Time.deltaTime);
 
+        // Обновляем полоску здоровья
         if (healthBar != null)
+        {
             healthBar.SetHealth(health, maxHealth);
+        }
     }
 
     private void MoveTowards(Vector3 targetPos)
@@ -142,10 +154,11 @@ public class CharacterController : MonoBehaviour
             dir = AvoidObstacle(dir);
         }
 
+        // Передвигаем вручную (т.к. isKinematic)
         transform.position += dir * moveSpeed * Time.deltaTime;
 
-        if (animator != null)
-            animator.SetBool("IsRunning", true);
+        // Здесь убрали вызов animator.SetBool("IsRunning", true);
+        // Теперь isRunning ставится в Update() исходя из shouldMove
 
         if (dir != Vector3.zero)
         {
@@ -213,28 +226,26 @@ public class CharacterController : MonoBehaviour
     {
         if (isDead || isAttacking) return;
 
-        if (animator != null)
-        {
-            isAttacking = true;
+        isAttacking = true;
+        animator.SetBool("IsAttacking", true);
 
-            // Чередование анимаций
-            currentAttackIndex = (currentAttackIndex + 1) % totalAttackAnimations;
+        currentAttackIndex = (currentAttackIndex + 1) % totalAttackAnimations;
+        animator.SetTrigger($"Attack{currentAttackIndex + 1}");
 
-            if (attackType == CharacterAttackType.Melee || attackType == CharacterAttackType.Ranged)
-            {
-                // Используем те же анимации для обоих типов атак
-                animator.SetTrigger($"Attack{currentAttackIndex + 1}");
-            }
-        }
+        float duration = (currentAttackIndex == 0) ? attack1Duration : attack2Duration;
+        Invoke(nameof(EndAttack), duration);
+    }
 
-        Invoke(nameof(EndAttack), 0.5f); // Завершаем атаку через время анимации
+    private void EndAttack()
+    {
+        isAttacking = false;
+        animator.SetBool("IsAttacking", false);
     }
 
     public void LaunchProjectile()
     {
         if (bulletPrefab == null || currentTarget == null || isDead) return;
 
-        // Если точка спавна не указана, используем позицию персонажа
         Vector3 spawnPosition = projectileSpawnPoint != null 
             ? projectileSpawnPoint.position 
             : transform.position + Vector3.up * 1.5f;
@@ -256,30 +267,16 @@ public class CharacterController : MonoBehaviour
             : (currentTarget != null ? currentTarget.transform.position : transform.position);
 
         GameObject effect = Instantiate(impactEffectPrefab, spawnPosition, Quaternion.identity);
-        Destroy(effect, 2f); // Уничтожаем эффект через 2 секунды
-    }
-
-    private void EndAttack()
-    {
-        isAttacking = false;
-
-        if (animator != null)
-        {
-            animator.ResetTrigger("Attack1");
-            animator.ResetTrigger("Attack2");
-        }
+        Destroy(effect, 2f);
     }
 
     public void ApplyDamageToTarget()
     {
         if (isDead) return;
-
         if (currentTarget != null && !currentTarget.isDead)
         {
             currentTarget.TakeDamage(attackDamage);
         }
-
-        // Создаем эффект удара
         SpawnImpactEffect();
     }
 
@@ -291,36 +288,57 @@ public class CharacterController : MonoBehaviour
         if (health < 0f) health = 0f;
 
         if (healthBar != null)
+        {
             healthBar.SetHealth(health, maxHealth);
+        }
 
         if (health <= 0f)
+        {
             Die();
+        }
     }
 
+    // <<< Вариант 2.1: делаем коллайдер триггером, чтобы труп не мешал, и фиксируем его на месте
     private void Die()
     {
         if (isDead) return;
         isDead = true;
-
         isAttacking = false;
 
-        if (animator != null)
-        {
-            animator.ResetTrigger("Attack1");
-            animator.ResetTrigger("Attack2");
-            animator.SetTrigger("Die");
-        }
+        animator.SetBool("IsDead", true);
+        animator.SetBool("IsRunning", false);
+        animator.SetBool("IsAttacking", false);
+        animator.ResetTrigger("Attack1");
+        animator.ResetTrigger("Attack2");
+        animator.SetTrigger("Die");
 
         if (battleManager != null)
             battleManager.RemoveCharacter(this);
 
+        // 1) Один раз «прижимаем» персонажа к земле
+        StickToGround();
+
+        // 2) Делаем Rigidbody полностью неподвижным,
+        //    чтобы не падал и не сдвигался
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+
+        // 3) Делаем коллайдер триггером (не мешает другим, но не падает)
         Collider col = GetComponent<Collider>();
         if (col != null)
-            col.enabled = false;
+        {
+            // Важно: оставляем включённым, но делаем isTrigger = true
+            col.isTrigger = true;
+        }
 
+        // 4) Выключаем визуализацию полоски здоровья
         if (healthBar != null)
             healthBar.gameObject.SetActive(false);
 
+        // Отключаем логику скрипта — персонаж более не управляется
         enabled = false;
     }
 
