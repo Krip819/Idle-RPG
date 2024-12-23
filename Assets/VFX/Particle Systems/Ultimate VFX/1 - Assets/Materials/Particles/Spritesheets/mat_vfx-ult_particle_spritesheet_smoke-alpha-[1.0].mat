@@ -1,0 +1,397 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: mat_vfx-ult_particle_spritesheet_smoke-alpha-[1.0]
+  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlbedoDecalMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoTransparency:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cracks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CustomColorMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DecalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveDirectionMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Distortion:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _InnerRimMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _InnerRimProfile:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LavaAppearMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LavaNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LavaNoiseDistortion:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: bb0cae31eec296d4c950584b24d07a1d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicSmoothness:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Noise01:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OpacityMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PackedTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondMaskProfile:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpriteTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SurfaceNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _APPEARGRADIENTENABLED: 0
+    - _AddPrecomputedVelocity: 0
+    - _AlbedoDecalNegate: 0
+    - _AlbedoMapExp: 1
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 0
+    - _AlphaSrcBlend: 1
+    - _AppearGradientAbsSwitch: 1
+    - _AppearGradientExp: 4
+    - _AppearGradientFlipSwitch: 1
+    - _AppearGradientOffset: 1.25
+    - _AppearGradientPower: 1
+    - _AppearGradientRemapMax: 4
+    - _AppearVertexYOffset: 0
+    - _BlendMode: 0
+    - _CRACKSENABLED: 0
+    - _ColorMaskDistance: 25
+    - _ColorMaskPower: 1
+    - _ConservativeDepthOffsetEnable: 0
+    - _CracksNegate: 0
+    - _CracksNegateSlope: 0
+    - _CracksScaleU: 1
+    - _CracksScaleV: 1
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _CustomColorMaskAffectedByDynamics: 1
+    - _CustomColorMaskSwitch: 0
+    - _DISSOLVEDIRECTIONMASKFLIP: 0
+    - _DISSOLVEMANUALCONTROL: 0
+    - _DISSOLVETEXTUREFLIP: 1
+    - _DISSOLVETEXTUREFLIPSwitch: 1
+    - _DISSOLVETEXTURERADIAL: 0
+    - _DISSOLVETEXTURERADIALScaleU: 1
+    - _DISSOLVETEXTURERADIALScaleV: 1
+    - _DISTORTIONENABLED: 0
+    - _DISTORTIONRADIAL: 0
+    - _DISTORTIONRADIALOldMethodSwitch: 0
+    - _DISTORTIONRADIALScaleU: 1
+    - _DISTORTIONRADIALScaleV: 1
+    - _DISTORTIONUVORSPHERICAL: 0
+    - _DepthOffsetEnable: 0
+    - _DissolveDirectionScale: 1
+    - _DissolveEmissionExp: 1
+    - _DissolveEmissionOffset: 0
+    - _DissolveEmissionPower: 1
+    - _DissolveEmissionRemapMax: 0.25
+    - _DissolveExp: 6.47
+    - _DissolveExpReversed: 2
+    - _DissolveGlowAffectsRamp: 1
+    - _DissolveGlowAmount: 0
+    - _DissolveGlowOffset: 0.125
+    - _DissolveGlowPower: 1
+    - _DissolveManualProgress: 0
+    - _DissolveMaskSteepness: 0
+    - _DissolveTextureRandomMax: 1.1
+    - _DissolveTextureRandomMin: 0.9
+    - _DissolveTextureScaleU: 1
+    - _DissolveTextureScaleV: 1
+    - _DistortionExp: 1
+    - _DistortionMaskNegate: 0
+    - _DistortionMaskVSMoveU: 0
+    - _DistortionMaskVSMoveV: 0
+    - _DistortionPower: 0
+    - _DistortionRemapMax: 1
+    - _DistortionRemapMin: 0
+    - _DistortionScaleU: 1
+    - _DistortionScaleV: 1
+    - _DistortionScrollSpeedU: 0
+    - _DistortionScrollSpeedV: 0
+    - _DistortionSpheticalStyle: 0
+    - _DistortionU: 1
+    - _DistortionV: 1
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedGIMode: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 0
+    - _EMISSIONVERTEXSTREAMENABLED: 0
+    - _EMISSIONVSCONTROLENABLED: 0
+    - _EmissionPower: 0
+    - _EmissionVSSwitch: 0
+    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableFogOnTransparent: 1
+    - _ExcludeFromTUAndAA: 0
+    - _FinalOpacityExp: 1
+    - _FinalOpacityPower: 1
+    - _FinalPower: 2
+    - _HeightBoost: 1
+    - _HeightMapNegate: 0
+    - _HeightSlopeControl: 0
+    - _INNERRIMENABLED: 0
+    - _INNERRIMMASKFLIP: 0
+    - _INNERRIMPROFILEENABLED: 0
+    - _InnerRimExp: 4
+    - _InnerRimHackNormals: 1
+    - _InnerRimMaskExp: 1
+    - _InnerRimMaskNegate: 0
+    - _InvFade: 1
+    - _LAVANOISEENABLED: 0
+    - _LavaAppearMaskExp: 1
+    - _LavaAppearMaskScaleU: 1
+    - _LavaAppearMaskScaleV: 1
+    - _LavaDistortionSlopeNegate: 1
+    - _LavaDistortionSlopeStyle: 0
+    - _LavaNoiseDistortionAmount: 0
+    - _LavaNoiseDistortionScaleU: 1
+    - _LavaNoiseDistortionScaleV: 1
+    - _LavaNoiseDistortionScrollSpeed: 0.075
+    - _LavaNoiseNegate: 0
+    - _LavaNoiseScaleU: 1
+    - _LavaNoiseScaleV: 1
+    - _LavaNoiseScrollSpeed: 0
+    - _LavaOnlyInValleysExp: 1
+    - _LavaOnlyInValleysNegate: 1
+    - _MainMaskExp: 1
+    - _MainMaskScaleU: 1
+    - _MainMaskScaleV: 1
+    - _MainMaskScrollSpeedU: 0
+    - _MainMaskScrollSpeedV: 0
+    - _Metallic: 1
+    - _NOISE01RADIAL: 0
+    - _NOISE01RADIALScaleU: 1
+    - _NOISE01RADIALScaleV: 1
+    - _Noise01Exp: 1
+    - _Noise01Negate: 0
+    - _Noise01RandomMax: 1.1
+    - _Noise01RandomMin: 0.9
+    - _Noise01ScaleU: 1
+    - _Noise01ScaleV: 1
+    - _Noise01ScrollSpeedU: 0
+    - _Noise01ScrollSpeedV: 0
+    - _OpacityMaskExp: 0.2
+    - _OpacityMaskPower: 1
+    - _OpacityMaskScaler: 1
+    - _OpaqueCullMode: 2
+    - _PARALLAXNOISEENABLED: 0
+    - _ParallaxNoiseDepth: 0
+    - _ParallaxNoiseNegate: 0
+    - _ParallaxNoiseScaleU: 1
+    - _ParallaxNoiseScaleV: 1
+    - _RAMPENABLED: 0
+    - _RIMEMISSIONAFFECTSMASK: 0
+    - _RIMEMISSIONENABLED: 0
+    - _RampAffectedByDynamics: 1
+    - _RampIgnoreVertexColor: 0
+    - _RampOffsetExp: 1
+    - _RampOffsetMultiply: 1
+    - _RampRemapMax: 0.33
+    - _RampSmoothstepMax: 0.75
+    - _RampSmoothstepMin: 0.25
+    - _RayTracing: 0
+    - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
+    - _RefractionModel: 0
+    - _RenderQueueType: 1
+    - _RequireSplitLighting: 0
+    - _RimEmissionExp: 3
+    - _RimEmissionNormal: 1
+    - _RimEmissionPower: 6
+    - _SOFTPARTICLESENABLED: 0
+    - _SURFACENOISEENABLED: 0
+    - _SecondMaskAffectsDistortion: 0
+    - _SecondMaskAffectsNoise01Negate: 0
+    - _SecondMaskAffectsRamp: 0
+    - _SecondMaskBoostsEmission: 0
+    - _SecondMaskEdgeGlow: 0
+    - _SecondMaskExp: 1
+    - _SecondMaskFractShrink: 1
+    - _SecondMaskFractSwitch: 0
+    - _SecondMaskNegate: 1
+    - _SecondMaskScaleU: 1
+    - _SecondMaskScaleV: 1
+    - _SecondMaskVSMoveU: 0
+    - _SecondMaskVSMoveV: 0
+    - _Smoothness: 1
+    - _SoftParticlesDistance: 0.2
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 1
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 10
+    - _StencilRefMV: 33
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 9
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 43
+    - _StretchU: 1
+    - _StretchV: 1
+    - _SupportDecals: 1
+    - _SurfaceNoiseAdd: 0
+    - _SurfaceNoiseExp: 1
+    - _SurfaceNoiseScaleU: 1
+    - _SurfaceNoiseScaleV: 1
+    - _SurfaceType: 0
+    - _TexturePower: 1
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentDepthPostpassEnable: 0
+    - _TransparentDepthPrepassEnable: 0
+    - _TransparentSortPriority: 0
+    - _TransparentWritingMotionVec: 0
+    - _TransparentZWrite: 0
+    - _UseShadowThreshold: 0
+    - _VALLEYSEMISSIONBOOSTENABLED: 0
+    - _VERTICALGRADIENTENABLED: 0
+    - _VERTICALGRADIENTWORLDPOSITION: 0
+    - _ValleysEmissionBoostAmount: 80
+    - _ValleysEmissionBoostBloom: 1
+    - _VerticalGradientExp: 1
+    - _VerticalGradientFlipSwitch: 0
+    - _VerticalGradientOffset: 0
+    - _VerticalGradientRemapMax: 1
+    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    m_Colors:
+    - _AlbedoColor: {r: 0.62352943, g: 0.47450978, b: 0.42745098, a: 1}
+    - _AlbedoColor2: {r: 0, g: 0, b: 0, a: 1}
+    - _AlbedoColorTint: {r: 1, g: 1, b: 1, a: 1}
+    - _AlbedoDecalColor: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorMaskOuterColor: {r: 0.5294118, g: 0.5294118, b: 0.5294118, a: 1}
+    - _CustomColorMaskChannels: {r: 1, g: 0, b: 0, a: 0}
+    - _DissolveEmissionColor: {r: 1, g: 0, b: 0, a: 1}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColorH: {r: 0, g: 0, b: 0, a: 0}
+    - _FinalColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainMaskChannelsMultiply: {r: 1, g: 0, b: 0, a: 0}
+    - _RampColorTint: {r: 1, g: 1, b: 1, a: 1}
+    - _RimEmissionColor: {r: 1, g: 0, b: 0, a: 1}
+    - _TextureColorTint: {r: 1, g: 1, b: 1, a: 1}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
