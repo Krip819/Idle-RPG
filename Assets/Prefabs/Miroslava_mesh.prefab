@@ -250,6 +250,7 @@ MonoBehaviour:
   forwardAxis: 1
   rotationSpeed: 5
   avoidanceAngle: 45
+  verticalOffset: 0.3
   attack1Duration: 1.5
   attack2Duration: 1.3
 --- !u!54 &8280469920752708978

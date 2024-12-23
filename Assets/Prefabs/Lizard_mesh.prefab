@@ -214,6 +214,7 @@ MonoBehaviour:
   forwardAxis: 1
   rotationSpeed: 5
   avoidanceAngle: 45
+  verticalOffset: 0.2
   attack1Duration: 2.1
   attack2Duration: 2.1
 --- !u!4 &1962412503404336610 stripped

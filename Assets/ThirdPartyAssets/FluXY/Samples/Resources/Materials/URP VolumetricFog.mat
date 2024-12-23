@@ -123,9 +123,9 @@ Material:
     - Vector1_3FEA0E54: 0
     - Vector1_837DA489: 64
     - Vector1_9808C570: 1
-    - Vector1_9E6B6241: 16
+    - Vector1_9E6B6241: 16.8
     - Vector1_C4967509: 23.17
-    - Vector1_E676DA21: 168.55
+    - Vector1_E676DA21: 34.47
     - Vector1_F3B7B00E: 0
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
@@ -205,9 +205,9 @@ Material:
     - _noisePow: 3
     - _noiseScale: 20
     - _shadowThreshold: 0
-    - _volumeExtrusion: 0.094
-    - _volumeFalloff: 0.86
-    - _volumeOffset: 0.793
+    - _volumeExtrusion: 0.077
+    - _volumeFalloff: 0.095
+    - _volumeOffset: 0.474
     m_Colors:
     - Color_68344F06: {r: 0.35866857, g: 0.4517726, b: 0.49056602, a: 1}
     - Color_753F6498: {r: 0.23362409, g: 0.49122643, b: 0.6603774, a: 1}
