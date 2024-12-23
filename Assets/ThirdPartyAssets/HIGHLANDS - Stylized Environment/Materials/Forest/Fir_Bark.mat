@@ -762,7 +762,7 @@ Material:
     - _BaseColor3: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap0_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.3207547, g: 0.04805571, b: 0, a: 0}
+    - _Color: {r: 0.1981132, g: 0.15510823, b: 0.13363296, a: 0}
     - _CoverageColor: {r: 0.24645601, g: 0.46865076, b: 0.504, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DiffusionProfileAsset0: {r: 0, g: 0, b: 0, a: 0}
@@ -773,7 +773,7 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
-    - _HueVariationColor: {r: 0.8113208, g: 0.6201455, b: 0.21048418, a: 0.6666667}
+    - _HueVariationColor: {r: 0.8113207, g: 0.6201455, b: 0.21048415, a: 0.36078432}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}

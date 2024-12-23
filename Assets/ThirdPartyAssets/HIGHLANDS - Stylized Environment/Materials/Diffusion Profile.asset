@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Diffusion Profile
   m_EditorClassIdentifier: 
   profile:
-    scatteringDistance: {r: 0.8843583, g: 1, b: 0.6150811, a: 1}
-    scatteringDistanceMultiplier: 0.2
-    transmissionTint: {r: 2.4647415, g: 2.094538, b: 0.7613598, a: 1}
-    texturingMode: 0
+    scatteringDistance: {r: 0.8556992, g: 1, b: 0.5225216, a: 1}
+    scatteringDistanceMultiplier: 0.75
+    transmissionTint: {r: 1.6011323, g: 1.5908334, b: 1.2612693, a: 1}
+    texturingMode: 1
     transmissionMode: 1
-    thicknessRemap: {x: 0, y: 0.707849}
+    thicknessRemap: {x: 2.4271846, y: 7.5242763}
     worldScale: 1
-    ior: 1.4
+    ior: 1
     hash: 1080204569
   m_Version: 2

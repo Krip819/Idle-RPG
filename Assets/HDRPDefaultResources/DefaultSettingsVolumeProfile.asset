@@ -73,16 +73,16 @@ MonoBehaviour:
   active: 1
   rotation:
     m_OverrideState: 1
-    m_Value: 21
+    m_Value: 54
   skyIntensityMode:
     m_OverrideState: 1
     m_Value: 1
   exposure:
     m_OverrideState: 1
-    m_Value: 11
+    m_Value: 15.1
   multiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 27.69
   upperHemisphereLuxValue:
     m_OverrideState: 1
     m_Value: 1.0855405
@@ -91,7 +91,7 @@ MonoBehaviour:
     m_Value: {x: 0.18522426, y: 0.27078894, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 1
-    m_Value: 16000
+    m_Value: 54000
   updateMode:
     m_OverrideState: 1
     m_Value: 0
@@ -197,10 +197,10 @@ MonoBehaviour:
     m_Value: 2
   threshold:
     m_OverrideState: 1
-    m_Value: 0.44
+    m_Value: 5.13
   intensity:
     m_OverrideState: 1
-    m_Value: 0.37
+    m_Value: 0.347
   scatter:
     m_OverrideState: 1
     m_Value: 0.63
@@ -246,12 +246,12 @@ MonoBehaviour:
     m_Value: 1
   skyAmbientMode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   windOrientation:
     m_OverrideState: 1
     m_Value: 125
   windSpeed:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 100
   fogType:
     m_OverrideState: 0
@@ -273,8 +273,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 3
   meteringMode:
-    m_OverrideState: 0
-    m_Value: 2
+    m_OverrideState: 1
+    m_Value: 1
   luminanceSource:
     m_OverrideState: 0
     m_Value: 1
@@ -283,13 +283,13 @@ MonoBehaviour:
     m_Value: 14.672231
   compensation:
     m_OverrideState: 1
-    m_Value: 1.93
+    m_Value: 1.61
   limitMin:
-    m_OverrideState: 0
-    m_Value: -10
+    m_OverrideState: 1
+    m_Value: 11.6744175
   limitMax:
-    m_OverrideState: 0
-    m_Value: 10
+    m_OverrideState: 1
+    m_Value: 11.534883
   curveMap:
     m_OverrideState: 0
     m_Value:
@@ -382,7 +382,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   histogramPercentages:
     m_OverrideState: 1
-    m_Value: {x: 23.960878, y: 58.312943}
+    m_Value: {x: 20.962183, y: 55.314262}
   histogramUseCurveRemapping:
     m_OverrideState: 0
     m_Value: 0
@@ -428,13 +428,13 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.842
+    m_Value: 0.8
   directLightingStrength:
     m_OverrideState: 1
-    m_Value: 0.103
+    m_Value: 0.497
   radius:
     m_OverrideState: 1
-    m_Value: 1.5
+    m_Value: 0.6
   spatialBilateralAggressiveness:
     m_OverrideState: 0
     m_Value: 0.15
@@ -442,7 +442,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   ghostingReduction:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.5
   blurSharpness:
     m_OverrideState: 0
@@ -463,13 +463,13 @@ MonoBehaviour:
     m_Value: 1
   m_StepCount:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 8
   m_FullResolution:
     m_OverrideState: 0
     m_Value: 0
   m_MaximumRadiusInPixels:
     m_OverrideState: 1
-    m_Value: 65
+    m_Value: 21
   m_BilateralUpsample:
     m_OverrideState: 1
     m_Value: 1
@@ -530,7 +530,7 @@ MonoBehaviour:
     m_Value: {fileID: 11700000, guid: 14b10e28a15232c4c8b8168d77297a1a, type: 3}
   lutContribution:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0
   neutralHDRRangeReductionMode:
     m_OverrideState: 0
     m_Value: 2

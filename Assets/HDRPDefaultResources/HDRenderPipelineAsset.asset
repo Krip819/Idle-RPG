@@ -23,10 +23,10 @@ MonoBehaviour:
       m_Values: 140000002800000050000000
       m_SchemaId:
         m_Id: With3Levels
-    supportVolumetrics: 1
-    supportVolumetricClouds: 1
-    supportLightLayers: 0
-    supportWater: 1
+    supportVolumetrics: 0
+    supportVolumetricClouds: 0
+    supportLightLayers: 1
+    supportWater: 0
     waterSimulationResolution: 256
     waterCPUSimulation: 1
     supportDistortion: 1
@@ -60,8 +60,8 @@ MonoBehaviour:
     probeVolumeBlendingMemoryBudget: 128
     supportProbeVolumeStreaming: 0
     probeVolumeSHBands: 1
-    supportRayTracing: 1
-    supportedRayTracingMode: 3
+    supportRayTracing: 0
+    supportedRayTracingMode: 1
     lightLoopSettings:
       cookieAtlasSize: 1024
       cookieFormat: 74
@@ -82,7 +82,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 0
       supportFabricConvolution: 0
-      maxDirectionalLightsOnScreen: 16
+      maxDirectionalLightsOnScreen: 12
       maxPunctualLightsOnScreen: 512
       maxAreaLightsOnScreen: 64
       maxCubeReflectionOnScreen: 32
@@ -174,7 +174,7 @@ MonoBehaviour:
       - 5
       - 8
       - 13
-      DoFResolution: 040000000200000001000000
+      DoFResolution: 040000000200000002000000
       DoFHighQualityFiltering: 000101
       DoFPhysicallyBased: 000000
       LimitManualRangeNearBlur: 000000
