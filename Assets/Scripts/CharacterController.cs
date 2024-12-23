@@ -47,6 +47,10 @@ public class CharacterController : MonoBehaviour
     [Header("Obstacle Avoidance")]
     public float avoidanceAngle = 45f;
 
+    [Header("Position Settings")]
+    [Tooltip("Вертикальное смещение персонажа от земли.")]
+    public float verticalOffset = 0f;
+
     private bool isInBattle = false;
     private bool isDead = false;
     private bool isAttacking = false;
@@ -363,7 +367,12 @@ public class CharacterController : MonoBehaviour
     {
         if (Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out RaycastHit hit, 2f))
         {
-            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, hit.point.y + verticalOffset, transform.position.z);
+        }
+        else
+        {
+            // Если луч не столкнулся с поверхностью, используем вертикальное смещение относительно текущей позиции
+            transform.position = new Vector3(transform.position.x, verticalOffset, transform.position.z);
         }
     }
 
@@ -375,5 +384,15 @@ public class CharacterController : MonoBehaviour
         isInBattle = true;
 
         StickToGround();
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position + Vector3.up * 0.5f, transform.position + Vector3.down * 1.5f);
+        
+        // Визуализация вертикального смещения
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y + verticalOffset, transform.position.z), 0.1f);
     }
 }

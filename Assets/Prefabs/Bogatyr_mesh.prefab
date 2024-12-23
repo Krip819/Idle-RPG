@@ -146,6 +146,18 @@ PrefabInstance:
       value: 1.8265297
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fed03c5b926c4bf42bc110522f33421f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fed03c5b926c4bf42bc110522f33421f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fed03c5b926c4bf42bc110522f33421f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fed03c5b926c4bf42bc110522f33421f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -617,6 +629,7 @@ MonoBehaviour:
   forwardAxis: 1
   rotationSpeed: 5
   avoidanceAngle: 45
+  verticalOffset: 0.2
   attack1Duration: 3
   attack2Duration: 2
 --- !u!54 &312500003924710459
