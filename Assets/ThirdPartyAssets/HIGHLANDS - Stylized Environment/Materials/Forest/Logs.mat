@@ -637,7 +637,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.233
     - _Smoothness0: 0.5
     - _Smoothness1: 0.5
     - _Smoothness2: 0.5
@@ -743,14 +743,14 @@ Material:
     - __dirty: 1
     m_Colors:
     - Diffusion_Profile_Asset: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 0.4716981, g: 0.4680942, b: 0.41162336, a: 1}
+    - _BaseColor: {r: 0.6886792, g: 0.47137251, b: 0.2891153, a: 1}
     - _BaseColor0: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor1: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor2: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor3: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap0_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.4716981, g: 0.4680941, b: 0.41162333, a: 1}
+    - _Color: {r: 0.6886792, g: 0.47137243, b: 0.28911528, a: 1}
     - _CoverageColor: {r: 0.41960785, g: 0.6184083, b: 0.6392157, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DiffusionProfileAsset0: {r: 0, g: 0, b: 0, a: 0}
