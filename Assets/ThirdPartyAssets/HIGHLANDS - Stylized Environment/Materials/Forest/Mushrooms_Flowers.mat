@@ -574,7 +574,7 @@ Material:
     - _LinkDetailsWithBase3: 1
     - _LockbyVcoordinates: 0
     - _MaterialID: 1
-    - _Metallic: 0
+    - _Metallic: 0.698
     - _Metallic0: 0
     - _Metallic1: 0
     - _Metallic2: 0
@@ -629,7 +629,7 @@ Material:
     - _SecondColorFade: 0.5
     - _SecondColorOffset: 0
     - _SecondColorOverlayType: 0
-    - _Smoothness: 0.1
+    - _Smoothness: 0.127
     - _Smoothness0: 0.5
     - _Smoothness1: 0.5
     - _Smoothness2: 0.5
@@ -744,14 +744,14 @@ Material:
     - __dirty: 1
     m_Colors:
     - Diffusion_Profile_Asset: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 0.97098655, b: 0.8632076, a: 1}
+    - _BaseColor: {r: 1, g: 0.87595963, b: 0.8160377, a: 1}
     - _BaseColor0: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor1: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor2: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor3: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap0_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1, g: 0.97098655, b: 0.8632076, a: 1}
+    - _Color: {r: 1, g: 0.87595963, b: 0.8160377, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DiffusionProfileAsset0: {r: 0, g: 0, b: 0, a: 0}
     - _DiffusionProfileAsset1: {r: 0, g: 0, b: 0, a: 0}
