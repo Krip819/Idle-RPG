@@ -109,7 +109,7 @@ MonoBehaviour:
     m_Value: 7.02
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 3.18
+    m_Value: 5.44
   enableVolumetricFog:
     m_OverrideState: 0
     m_Value: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9240644, z: 0.98638564, w: 0.17453122}
+    m_Value: {x: 1, y: 0.9240644, z: 0.98638564, w: 0.07110524}
   midtones:
     m_OverrideState: 0
     m_Value: {x: 0.9107959, y: 0.96911746, z: 1, w: -0.23290865}
@@ -325,7 +325,7 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: -1.01
+    m_Value: -0.38
   contrast:
     m_OverrideState: 1
     m_Value: -0.6
@@ -337,7 +337,7 @@ MonoBehaviour:
     m_Value: -2
   saturation:
     m_OverrideState: 1
-    m_Value: -8.8
+    m_Value: -3.5
 --- !u!114 &2264863995999713099
 MonoBehaviour:
   m_ObjectHideFlags: 3

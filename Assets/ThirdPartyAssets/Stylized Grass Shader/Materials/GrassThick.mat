@@ -112,7 +112,7 @@ Material:
     - _AddPrecomputedVelocity: 0
     - _AdvancedLighting: 1
     - _AlphaClip: 0
-    - _AlphaClipThreshold: 0.346
+    - _AlphaClipThreshold: 0.581
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
@@ -147,7 +147,7 @@ Material:
     - _FadeAngleThreshold: 15
     - _FadingOn: 0
     - _GlossMapScale: 0
-    - _Glossiness: 0.11
+    - _Glossiness: 0.167
     - _GlossyReflections: 0
     - _HueVariationKwToggle: 1
     - _LightingMode: 2
@@ -225,14 +225,14 @@ Material:
     - Diffusion_Profile_Asset: {r: 1.2117131e-31, g: 0.00000033584965, b: 3.7164076e-28, a: 8.282103e+30}
     - _BaseColor: {r: 0.42587593, g: 0.745283, b: 0, a: 1}
     - _BendTint: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-    - _Color: {r: 0.15044881, g: 0.24528301, b: 0.070576705, a: 1}
+    - _Color: {r: 0.21337664, g: 0.3301887, b: 0.11992702, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FadeFar: {r: 50, g: 100, b: 0, a: 0}
     - _FadeNear: {r: 0.25, g: 0.5, b: 0, a: 0}
     - _FadeParams: {r: 50, g: 100, b: 0, a: 0}
     - _HueVariation: {r: 1, g: 0.63, b: 0, a: 0.15}
-    - _HueVariationColor: {r: 1, g: 0.5, b: 0, a: 0.80784315}
+    - _HueVariationColor: {r: 1, g: 0.5, b: 0, a: 0.8352941}
     - _LODDebugColor: {r: 1, g: 1, b: 1, a: 1}
     - _NormalParams: {r: 0.809, g: 1, b: 0, a: 0}
     - _ScalemapInfluence: {r: 0, g: 1, b: 0, a: 0}

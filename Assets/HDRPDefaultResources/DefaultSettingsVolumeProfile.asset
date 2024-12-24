@@ -37,6 +37,18 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 404820c4cf36ad944862fa59c56064f0, type: 2}
     - {fileID: 11400000, guid: 2384dbf2c1c420f45a792fbc315fbfb1, type: 2}
     - {fileID: 11400000, guid: 134a1d0cd34eb434298eeb11d611d172, type: 2}
+    - {fileID: 11400000, guid: ad180cf900c4ef141be2b350f09ffa5b, type: 2}
+    - {fileID: 11400000, guid: fcd70d05840926746a3daff4f0a00e1a, type: 2}
+    - {fileID: 11400000, guid: 806662ba108f2924e87ff130ceb55b0c, type: 2}
+    - {fileID: 11400000, guid: fe4039db552975244bf7f3c3ce891928, type: 2}
+    - {fileID: 11400000, guid: 92119388ece825647ba5039062efc187, type: 2}
+    - {fileID: 11400000, guid: 7906daf99f11c624a9d2c8fa0eed731c, type: 2}
+    - {fileID: 11400000, guid: 2efa14a049ef1fc49bcf18c90ebcab30, type: 2}
+    - {fileID: 11400000, guid: 58a76e867a605c742aa94f71982ef7e7, type: 2}
+    - {fileID: 11400000, guid: c314e23034ad35d4f9416fe7d41f3800, type: 2}
+    - {fileID: 11400000, guid: a9e2fdd45db1cd248a51143525073d64, type: 2}
+    - {fileID: 11400000, guid: 927cb1a1d4ddf2144bf125f3bbd836af, type: 2}
+    - {fileID: 11400000, guid: f9c7b3f0a2e52b94c8fe3b415831a017, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7593b3a9277ac4696b20006c21dde2, type: 3}
   m_Name: VisualEnvironment
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   skyType:
     m_OverrideState: 1
     m_Value: 1
@@ -283,7 +295,7 @@ MonoBehaviour:
     m_Value: 14.672231
   compensation:
     m_OverrideState: 1
-    m_Value: 1.61
+    m_Value: 1.08
   limitMin:
     m_OverrideState: 1
     m_Value: 11.6744175
@@ -322,22 +334,22 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: -10
-        value: -12
+        time: -10.125
+        value: 7.528305
         inSlope: 0
-        outSlope: 1
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 20
-        value: 18
-        inSlope: 1
-        outSlope: 0
+        time: 17.75
+        value: -1.5990505
+        inSlope: -2.4157681
+        outSlope: -2.4157681
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.21960784
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -348,22 +360,22 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: -10
-        value: -8
+        time: -11.125
+        value: -5.52359
         inSlope: 0
-        outSlope: 1
+        outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 20
-        value: 22
-        inSlope: 1
-        outSlope: 0
+        time: 17.125
+        value: 21.929249
+        inSlope: -0.15723282
+        outSlope: -0.15723282
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.9
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -428,10 +440,10 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.2
   directLightingStrength:
     m_OverrideState: 1
-    m_Value: 0.497
+    m_Value: 0.463
   radius:
     m_OverrideState: 1
     m_Value: 0.6
