@@ -67,6 +67,18 @@ public class CharacterController : MonoBehaviour
     private int currentAttackIndex = 0;
     private int totalAttackAnimations = 2;
 
+    // >>>>> Добавлено для Специальной VFX Атаки
+    [Header("Special VFX Attack Settings")]
+    [Tooltip("Визуальный эффект, активируемый на каждой N-й атаке.")]
+    public GameObject specialVFXPrefab; // Префаб VFX, который вы укажете в инспекторе
+    [Tooltip("Точка спавна VFX. Если не указана, будет использована текущая позиция персонажа.")]
+    public Transform specialVFXSpawnPoint; // Точка спавна VFX, которую можно указать в инспекторе
+    [Tooltip("Интервал атак для активации VFX (например, 4 означает каждую 4-ю атаку).")]
+    public int specialAttackInterval = 4; // По умолчанию каждая 4-я атака
+
+    private int attackCount = 0; // Счётчик атак
+    // <<<<< Конец добавлений для Специальной VFX Атаки
+
     void Awake()
     {
         health = maxHealth;
@@ -233,6 +245,21 @@ public class CharacterController : MonoBehaviour
         isAttacking = true;
         animator.SetBool("IsAttacking", true);
 
+        // >>>>> Добавлено для Специальной VFX Атаки
+        attackCount++; // Увеличиваем счётчик атак
+
+        bool isSpecialAttack = (attackCount % specialAttackInterval) == 0;
+
+        if (isSpecialAttack && specialVFXPrefab != null)
+        {
+            // Активируем специальный VFX
+            Vector3 spawnPos = (specialVFXSpawnPoint != null) ? specialVFXSpawnPoint.position : transform.position;
+            Quaternion spawnRot = (specialVFXSpawnPoint != null) ? specialVFXSpawnPoint.rotation : Quaternion.identity;
+            Instantiate(specialVFXPrefab, spawnPos, spawnRot);
+        }
+        // <<<<< Конец добавлений для Специальной VFX Атаки
+
+        // Триггерим анимацию атаки
         currentAttackIndex = (currentAttackIndex + 1) % totalAttackAnimations;
         animator.SetTrigger($"Attack{currentAttackIndex + 1}");
 

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Image fillImage; // Ссылка на изображение полоски здоровья
+    public Slider healthSlider; // Ссылка на слайдер здоровья
     private Camera mainCamera; // Ссылка на главную камеру
 
     private Transform characterTransform; // Ссылка на объект персонажа
@@ -67,10 +67,9 @@ public class HealthBar : MonoBehaviour
     /// </summary>
     public void SetHealth(float currentHealth, float maxHealth)
     {
-        if (fillImage != null)
+        if (healthSlider != null)
         {
-            fillImage.fillAmount = Mathf.Clamp01(currentHealth / maxHealth);
-            fillImage.color = Color.Lerp(Color.red, Color.green, fillImage.fillAmount); // Цвет от красного к зелёному
+            healthSlider.value = Mathf.Clamp01(currentHealth / maxHealth);
         }
     }
 }

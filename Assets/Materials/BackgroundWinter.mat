@@ -209,8 +209,8 @@ Material:
     - _DrawOrder: 0
     - _DstBlend: 10
     - _EmissionEnabled: 0
-    - _EmissiveExposureWeight: 0.796
-    - _EmissiveIntensity: 5.2
+    - _EmissiveExposureWeight: 0.972
+    - _EmissiveIntensity: 1.8759987
     - _EmissiveIntensityUnit: 0
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableExternalAlpha: 0
@@ -294,14 +294,14 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 0.33857563, g: 0.33857563, b: 0.33857563, a: 5.2}
+    - _EmissiveColor: {r: 0.55372036, g: 0.39959723, b: 1.4051597, a: 1.8759987}
     - _EmissiveColorHDR: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissiveColorLDR: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+    - _EmissiveColorLDR: {r: 0.57951695, g: 0.49887908, b: 0.88031507, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
@@ -310,7 +310,7 @@ Material:
     - _SpecularColor: {r: 0.6039216, g: 0.31372547, b: 0, a: 1}
     - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _TransmissionColor: {r: 1, g: 0.8666667, b: 0.627451, a: 1}
-    - _UnlitColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
+    - _UnlitColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnlitColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _uvBaseST: {r: 1, g: 1, b: 0, a: 0}
     - _uvSmoothnessST: {r: 20, g: 5, b: 0, a: 0}

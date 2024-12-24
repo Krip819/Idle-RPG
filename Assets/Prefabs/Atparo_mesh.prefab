@@ -178,8 +178,8 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 0}
   impactEffectPrefab: {fileID: 3894621978031112059, guid: 296ee2d9ff79c1c4cbe0006955c6b407, type: 3}
   impactEffectSpawnPoint: {fileID: 1780293252016733853}
-  healthBarPrefab: {fileID: 4890273565570154628, guid: f78dbd8561f0bea4aa2585fade51a238, type: 3}
-  healthBarHeight: 1.9
+  healthBarPrefab: {fileID: 4890273565570154628, guid: 48f83e82466208f43ac9983d54ef69b6, type: 3}
+  healthBarHeight: 2.2
   animator: {fileID: 8592108097402771855}
   forwardAxis: 1
   rotationSpeed: 5
@@ -187,6 +187,9 @@ MonoBehaviour:
   verticalOffset: 0.4
   attack1Duration: 2.2
   attack2Duration: 2.2
+  specialVFXPrefab: {fileID: 0}
+  specialVFXSpawnPoint: {fileID: 0}
+  specialAttackInterval: 4
 --- !u!54 &5781502867306365648
 Rigidbody:
   m_ObjectHideFlags: 0

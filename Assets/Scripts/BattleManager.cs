@@ -10,6 +10,15 @@ public class BattleManager : MonoBehaviour
     private List<CharacterController> allies = new List<CharacterController>();
     private List<CharacterController> enemies = new List<CharacterController>();
 
+    void Update()
+    {
+        // Проверяем нажатие клавиши пробела для запуска боя
+        if (!battleStarted && Input.GetKeyDown(KeyCode.Space))
+        {
+            StartBattle();
+        }
+    }
+
     /// <summary>
     /// Запускает бой, собирает всех персонажей и инициализирует их.
     /// </summary>
