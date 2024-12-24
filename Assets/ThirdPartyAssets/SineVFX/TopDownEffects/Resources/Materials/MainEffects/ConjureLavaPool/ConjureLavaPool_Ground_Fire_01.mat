@@ -199,10 +199,10 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _FinalOpacityExp: 1
+    - _FinalOpacityExp: 7.24
     - _FinalOpacityExp1: 1.125
-    - _FinalOpacityPower: 1
-    - _FinalPower: 80
+    - _FinalOpacityPower: 1.55
+    - _FinalPower: 483
     - _MDFOU: 1
     - _MDFOV: 1
     - _MVAnimationSpeed: 15
@@ -238,10 +238,10 @@ Material:
     - _RAMPAFFECTEDBYVERTEXCOLOR: 0
     - _RAMPENABLED: 1
     - _RadialDistortionNoisePower: 0
-    - _RampAffectedByDynamics: 1
+    - _RampAffectedByDynamics: 0.975
     - _RampAffectedByOther: 1
     - _RampNoiseAmount: 1
-    - _RampOffsetExp: 2
+    - _RampOffsetExp: 0.95
     - _RampOffsetMultiply: 1
     - _RampOffsetMultiply1: 1
     - _ReceivesSSR: 0
@@ -281,10 +281,10 @@ Material:
     - _CustomColorMaskChannels: {r: 1, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FinalColor: {r: 1, g: 0.2200647, b: 0.04245278, a: 1}
+    - _FinalColor: {r: 1, g: 0.5749774, b: 0.2971698, a: 1}
     - _MVMainMaskChannels: {r: 1, g: 0, b: 0, a: 0}
     - _MVMainMaskChannelsMultiply: {r: 1, g: 0, b: 0, a: 0}
     - _MainMaskChannelsMultiply: {r: 1, g: 1, b: 1, a: 0}
     - _Noise01ScrollSpeedUV: {r: 1, g: 1, b: 0, a: 0}
-    - _RampColorTint: {r: 1, g: 0.4481131, b: 0.4481131, a: 1}
+    - _RampColorTint: {r: 1, g: 0.61969507, b: 0.109803915, a: 1}
   m_BuildTextureStacks: []

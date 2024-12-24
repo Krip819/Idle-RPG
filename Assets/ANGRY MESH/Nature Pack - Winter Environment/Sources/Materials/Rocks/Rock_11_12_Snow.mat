@@ -455,7 +455,7 @@ Material:
     - _MaskUVScale: 0
     - _MaterialID: 1
     - _Metallic: 0
-    - _MetallicRemapMax: 0
+    - _MetallicRemapMax: 0.3703704
     - _MetallicRemapMin: 0
     - _Mode: 0
     - _MossIntensity: 0
@@ -482,7 +482,7 @@ Material:
     - _RefractionModel: 0
     - _Scale: 2
     - _Smoothness: 1
-    - _SmoothnessRemapMax: 0
+    - _SmoothnessRemapMax: 0.30581042
     - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularAAScreenSpaceVariance: 0.1
@@ -545,10 +545,10 @@ Material:
     - _node_7069: 0.51
     - _node_9200: 0
     m_Colors:
-    - _BaseColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 0}
+    - _BaseColor: {r: 0.7924528, g: 0.6770046, b: 0.5943396, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _COLORRR: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 0}
+    - _Color: {r: 0.7924528, g: 0.6770046, b: 0.5943396, a: 0}
     - _Color0: {r: 1, g: 1, b: 1, a: 0}
     - _Color1: {r: 0.72794116, g: 0.7065311, b: 0.7065311, a: 0}
     - _Color2: {r: 0.26503026, g: 0.27173218, b: 0.31617647, a: 0}

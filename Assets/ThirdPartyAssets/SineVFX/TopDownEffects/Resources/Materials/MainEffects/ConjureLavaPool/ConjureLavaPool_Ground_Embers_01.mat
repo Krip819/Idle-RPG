@@ -92,7 +92,7 @@ Material:
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
     - _FinalOpacityPower: 1
-    - _FinalPower: 40
+    - _FinalPower: 41
     - _FlipbookColums: 1
     - _FlipbookFrame: 0.1
     - _FlipbookRows: 4
@@ -133,7 +133,7 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FinalColor: {r: 1, g: 0.12787381, b: 0, a: 1}
+    - _FinalColor: {r: 0.6886792, g: 0.41287136, b: 0.1786668, a: 1}
     - _MainTexChannels: {r: 1, g: 0, b: 0, a: 0}
     - _RampColorTint: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
