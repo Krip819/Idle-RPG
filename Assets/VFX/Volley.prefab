@@ -10217,6 +10217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 322692590112694556}
+  - component: {fileID: -4879067579047140750}
   m_Layer: 0
   m_Name: Volley
   m_TagString: Untagged
@@ -10241,6 +10242,19 @@ Transform:
   - {fileID: 322692589310729702}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4879067579047140750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322692590112694557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054d7e6ec6dfeb248a7b9e675662dd2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 150
 --- !u!1 &1491891240470148799
 GameObject:
   m_ObjectHideFlags: 0

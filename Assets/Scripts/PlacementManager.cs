@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlacementManager : MonoBehaviour
 {
@@ -12,15 +13,19 @@ public class PlacementManager : MonoBehaviour
 
     [Header("Placement Settings")]
     public float verticalOffset = 0f;
-    public Vector3 characterRotation = Vector3.zero; // Настройка поворота в инспекторе
+    public Vector3 characterRotation = Vector3.zero;
 
     [Header("Preview Settings")]
     public Material previewMaterial;
+
+    [Header("UI Buttons")]
+    public List<Button> characterButtons; // Все кнопки выбора персонажей
 
     private GameObject selectedPrefab;
     private GameObject previewObject;
     private bool isPlacing = false;
     private bool hasPlacedCharacter = false;
+    private Button lastSelectedButton; // Последняя нажатая кнопка
 
     void Start()
     {
@@ -38,10 +43,16 @@ public class PlacementManager : MonoBehaviour
         selectedPrefab = prefab;
         isPlacing = true;
 
+        // Получаем кнопку, которая вызвала метод
+        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
+        if (clickedButton != null)
+        {
+            lastSelectedButton = clickedButton.GetComponent<Button>();
+        }
+
         previewObject = Instantiate(prefab);
         previewObject.name = "Preview_" + prefab.name;
 
-        // Отключаем лишние компоненты у превью
         Collider previewCollider = previewObject.GetComponent<Collider>();
         if (previewCollider != null)
             previewCollider.enabled = false;
@@ -81,8 +92,6 @@ public class PlacementManager : MonoBehaviour
         {
             float characterHeight = GetCharacterHeight(selectedPrefab);
             previewObject.transform.position = hit.point + Vector3.up * (characterHeight / 2f + verticalOffset);
-
-            // Применяем заданный поворот к объекту превью
             previewObject.transform.rotation = Quaternion.Euler(characterRotation);
 
             if (!previewObject.activeSelf)
@@ -102,7 +111,6 @@ public class PlacementManager : MonoBehaviour
         GameObject placedObject = Instantiate(selectedPrefab, previewObject.transform.position, Quaternion.Euler(characterRotation));
         placedObject.name = selectedPrefab.name;
 
-        // Включаем коллайдер и физику
         Collider placedCollider = placedObject.GetComponent<Collider>();
         if (placedCollider != null)
             placedCollider.enabled = true;
@@ -116,6 +124,11 @@ public class PlacementManager : MonoBehaviour
 
         hasPlacedCharacter = true;
         UpdateStartBattleButton();
+
+        if (lastSelectedButton != null)
+        {
+            DisableButtonAfterPlacement(lastSelectedButton);
+        }
 
         Destroy(previewObject);
         previewObject = null;
@@ -165,5 +178,13 @@ public class PlacementManager : MonoBehaviour
             }
             rend.materials = mats;
         }
+    }
+
+    private void DisableButtonAfterPlacement(Button button)
+    {
+        button.interactable = false;
+        ColorBlock colors = button.colors;
+        colors.disabledColor = Color.gray;
+        button.colors = colors;
     }
 }
