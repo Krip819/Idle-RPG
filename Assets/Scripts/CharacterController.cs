@@ -70,13 +70,13 @@ public class CharacterController : MonoBehaviour
     // >>>>> Добавлено для Специальной VFX Атаки
     [Header("Special VFX Attack Settings")]
     [Tooltip("Визуальный эффект, активируемый на каждой N-й атаке.")]
-    public GameObject specialVFXPrefab; // Префаб VFX, который вы укажете в инспекторе
+    public GameObject specialVFXPrefab; 
     [Tooltip("Точка спавна VFX. Если не указана, будет использована текущая позиция персонажа.")]
-    public Transform specialVFXSpawnPoint; // Точка спавна VFX, которую можно указать в инспекторе
+    public Transform specialVFXSpawnPoint;
     [Tooltip("Интервал атак для активации VFX (например, 4 означает каждую 4-ю атаку).")]
-    public int specialAttackInterval = 4; // По умолчанию каждая 4-я атака
+    public int specialAttackInterval = 4; 
 
-    private int attackCount = 0; // Счётчик атак
+    private int attackCount = 0; 
     // <<<<< Конец добавлений для Специальной VFX Атаки
 
     void Awake()
@@ -173,9 +173,6 @@ public class CharacterController : MonoBehaviour
         // Передвигаем вручную (т.к. isKinematic)
         transform.position += dir * moveSpeed * Time.deltaTime;
 
-        // Здесь убрали вызов animator.SetBool("IsRunning", true);
-        // Теперь isRunning ставится в Update() исходя из shouldMove
-
         if (dir != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(dir);
@@ -247,7 +244,6 @@ public class CharacterController : MonoBehaviour
 
         // >>>>> Добавлено для Специальной VFX Атаки
         attackCount++; // Увеличиваем счётчик атак
-
         bool isSpecialAttack = (attackCount % specialAttackInterval) == 0;
 
         if (isSpecialAttack && specialVFXPrefab != null)
@@ -349,19 +345,17 @@ public class CharacterController : MonoBehaviour
         // 1) Один раз «прижимаем» персонажа к земле
         StickToGround();
 
-        // 2) Делаем Rigidbody полностью неподвижным,
-        //    чтобы не падал и не сдвигался
+        // 2) Делаем Rigidbody полностью неподвижным
         if (rb != null)
         {
             rb.isKinematic = true;
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
 
-        // 3) Делаем коллайдер триггером (не мешает другим, но не падает)
+        // 3) Делаем коллайдер триггером
         Collider col = GetComponent<Collider>();
         if (col != null)
         {
-            // Важно: оставляем включённым, но делаем isTrigger = true
             col.isTrigger = true;
         }
 
@@ -369,7 +363,7 @@ public class CharacterController : MonoBehaviour
         if (healthBar != null)
             healthBar.gameObject.SetActive(false);
 
-        // Отключаем логику скрипта — персонаж более не управляется
+        // Отключаем логику скрипта
         enabled = false;
     }
 
@@ -398,7 +392,6 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
-            // Если луч не столкнулся с поверхностью, используем вертикальное смещение относительно текущей позиции
             transform.position = new Vector3(transform.position.x, verticalOffset, transform.position.z);
         }
     }
@@ -417,9 +410,24 @@ public class CharacterController : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position + Vector3.up * 0.5f, transform.position + Vector3.down * 1.5f);
-        
+
         // Визуализация вертикального смещения
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y + verticalOffset, transform.position.z), 0.1f);
+    }
+
+    // >>>>> Добавляем метод Heal <<<<<
+    public void Heal(float healAmount)
+    {
+        if (isDead) return; // Не лечим мёртвых
+
+        health += healAmount;
+        if (health > maxHealth) health = maxHealth; // Не превышаем максимальное здоровье
+
+        // Обновляем полоску здоровья
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(health, maxHealth);
+        }
     }
 }

@@ -134,9 +134,9 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FinalColor: {r: 1, g: 0.12787381, b: 0, a: 1}
+    - _FinalColor: {r: 0.26853323, g: 1, b: 0, a: 1}
     - _MainTexChannels: {r: 1, g: 0, b: 0, a: 0}
-    - _RampColorTint: {r: 1, g: 0.28773582, b: 0.28773582, a: 1}
+    - _RampColorTint: {r: 0.411696, g: 1, b: 0.28627455, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5663820066969844396
 MonoBehaviour:
